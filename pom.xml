@@ -2,17 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- Version des POM-Modells -->
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.NBITPROJECT</groupId>
-    <artifactId>bouncer</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <!-- Allgemeine Projektinformationen -->
+    <groupId>org.NBITPROJECT</groupId> <!-- Gruppierung des Projekts (Domain-ähnlich, für Organisationszwecke) -->
+    <artifactId>bouncer</artifactId> <!-- Der Name des Projekts/Artifacts -->
+    <version>1.0-SNAPSHOT</version> <!-- Die aktuelle Version des Projekts. "SNAPSHOT" bedeutet, dass es sich um
+    eine Entwicklungsversion handelt -->
 
+    <!-- Informationen zu den Entwicklern des Projekts -->
+    <!-- Die beteiligten Entwickler / the participating developers -->
     <developers>
         <developer>
-            <id>NB-IT-Project</id>
-            <name>Nils Berggold</name>
-            <email>nberggold@gmail.com</email>
+            <id>NB-IT-Project</id> <!-- Eindeutige ID des Entwicklers -->
+            <name>Nils Berggold</name> <!-- Name des Entwicklers -->
+            <email>nberggold@gmail.com</email> <!-- Kontakt-E-Mail-Adresse -->
         </developer>
         <developer>
             <id>shiro-edoc</id>
@@ -26,51 +32,55 @@
         </developer>
     </developers>
 
+    <!-- Versionskontrollinformationen -->
     <scm>
-        <url>https://github.com/NB-IT-Project/Bouncer</url>
+        <url>https://github.com/NB-IT-Project/Bouncer</url> <!-- Repository-URL des Projekts -->
     </scm>
 
-
+    <!-- Abhängigkeiten, die für das Projekt benötigt werden -->
     <dependencies>
-
+        <!-- Abhängigkeit zur Passwort-Validator-Bibliothek -->
         <dependency>
-            <groupId>com.cthiebaud</groupId>
-            <artifactId>password-validator</artifactId>
-            <version>1.0.0-SNAPSHOT</version>
+            <groupId>com.cthiebaud</groupId> <!-- Gruppen-ID der Bibliothek -->
+            <artifactId>password-validator</artifactId> <!-- Name des Artifacts -->
+            <version>1.0.0-SNAPSHOT</version> <!-- Version der Abhängigkeit -->
         </dependency>
 
+        <!-- Abhängigkeiten für das Test-Framework JUnit -->
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.11.2</version>
-            <scope>test</scope>
+            <groupId>org.junit.jupiter</groupId> <!-- Gruppen-ID für JUnit API -->
+            <artifactId>junit-jupiter-api</artifactId> <!-- Name des API-Artifacts -->
+            <version>5.11.2</version> <!-- Version der Abhängigkeit -->
+            <scope>test</scope> <!-- Diese Abhängigkeit wird nur für Tests benötigt -->
         </dependency>
-
         <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-engine</artifactId>
-            <version>5.11.2</version>
-            <scope>test</scope>
+            <groupId>org.junit.jupiter</groupId> <!-- Gruppen-ID für JUnit Engine -->
+            <artifactId>junit-jupiter-engine</artifactId> <!-- Name des Engine-Artifacts -->
+            <version>5.11.2</version> <!-- Version der Abhängigkeit -->
+            <scope>test</scope> <!-- Diese Abhängigkeit wird nur für Tests benötigt -->
         </dependency>
-
     </dependencies>
 
+    <!-- Repository-Einstellungen für externe Bibliotheken -->
     <repositories>
         <repository>
-            <id>athenaeum-brew-maven-repo</id>
-            <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
+            <id>athenaeum-brew-maven-repo</id> <!-- Eindeutige ID des Repositories -->
+            <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url> <!-- URL des Maven-Repositories -->
             <releases>
-                <enabled>true</enabled>
+                <enabled>true</enabled> <!-- Ermöglicht den Zugriff auf Release-Versionen -->
             </releases>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>true</enabled> <!-- Ermöglicht den Zugriff auf Snapshot-Versionen -->
             </snapshots>
         </repository>
     </repositories>
+
+    <!-- Konfiguration für die Verteilung des Artifacts -->
     <distributionManagement>
         <repository>
-            <id>athenaeum-brew-maven-repo</id>
-            <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url>
+            <id>athenaeum-brew-maven-repo</id> <!-- Eindeutige ID des Ziel-Repositories -->
+            <url>https://maven.pkg.github.com/athenaeum-brew/maven-repo</url> <!-- URL des Ziel-Repositories -->
         </repository>
     </distributionManagement>
+
 </project>
