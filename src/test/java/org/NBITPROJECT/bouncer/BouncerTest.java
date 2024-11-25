@@ -99,7 +99,7 @@ public class BouncerTest {
      */
     @Test
     public void testContainsTab() {
-        String password = "A1b\\t5678?";
+        String password = "A1b\t5678?";
         ValidationResult result = bouncer.validate(password);
         assertFalse(result.isValid());
         assertTrue(result.message().contains("Das Passwort darf keine Leerzeichen oder Tabulatoren enthalten"));

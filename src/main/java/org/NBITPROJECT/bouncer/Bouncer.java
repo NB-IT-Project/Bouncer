@@ -4,50 +4,63 @@ import com.cthiebaud.passwordvalidator.PasswordValidator;
 import com.cthiebaud.passwordvalidator.ValidationResult;
 
 /**
- * This class implements the {@link PasswordValidator} interface and provides functionality
+ * This class implements the {@link PasswordValidator} interface and provides
+ * functionality
  * to validate a password based on a set of defined conditions.
  * It also includes a method to return ASCII art for a specific output message.
  */
 public class Bouncer implements PasswordValidator {
 
     /**
-     * Generates ASCII art that is displayed when the password meets all conditions. Unfortunately, the PasswordValidatorTester terminates the program before this can be done. However the function would work.
+     * Generates ASCII art that is displayed when the password meets all conditions.
+     * Unfortunately, the PasswordValidatorTester terminates the program before this
+     * can be done. However the function would work, if changes to the
+     * PasswordValidatorTester by cthiebaud were allowed.
      * 
-     * @return A string representing the ASCII art to be printed when the password is correct.
+     * @return A string representing the ASCII art to be printed when the password
+     *         is correct.
      */
-    public String getYouAreInMThiebaudArt() {
-        String[] asciiArt = {
-                " Y   Y  OOO   U   U     AAAAA   RRRRR   EEEEE     O  N NNN     M   M    TTTTT  H   H  III  EEEEE  BBBB    AAAAA   U   U  DDDD   !! ",
-                "  Y Y  O   O  U   U    A     A  R    R  E         I   N   N    MM MM      T    H   H   I   E      B   B  A     A  U   U  D   D  !! ",
-                "   Y   O   O  U   U    AAAAAAA  RRRRR   EEEE      I   N   N    M M M      T    HHHHH   I   EEEE   BBBBB  AAAAAAA  U   U  D   D  !! ",
-                "   Y   O   O  U   U    A     A  R  R    E         I   N   N    M   M      T    H   H   I   E      B   B  A     A  U   U  D   D    ",
-                "   Y    OOO   UUUUU    A     A  R   R   EEEEE     I   N   N    M   M o    T    H   H  III  EEEEE  BBBB   A     A  UUUUU  DDDD   !! "
-        };
+    
+    
+    // public String getYouAreInMThiebaudArt() {
+    // String[] asciiArt = {
+    // " Y Y OOO U U AAAAA RRRRR EEEEE O N NNN M M TTTTT H H III EEEEE BBBB AAAAA U
+    // U DDDD !! ",
+    // " Y Y O O U U A A R R E I N N MM MM T H H I E B B A A U U D D !! ",
+    // " Y O O U U AAAAAAA RRRRR EEEE I N N M M M T HHHHH I EEEE BBBBB AAAAAAA U U D
+    // D !! ",
+    // " Y O O U U A A R R E I N N M M T H H I E B B A A U U D D ",
+    // " Y OOO UUUUU A A R R EEEEE I N N M M o T H H III EEEEE BBBB A A UUUUU DDDD
+    // !! "
+    // };
 
-        // String aus dem ASCII-Art-Array machen ; making a string from the ASCII-Art Array
-        StringBuilder artBuilder = new StringBuilder();
-        for (String line : asciiArt) {
-            artBuilder.append(line).append("\n");
-        }
+    // // String aus dem ASCII-Art-Array machen ; making a string from the ASCII-Art
+    // Array
+    // StringBuilder artBuilder = new StringBuilder();
+    // for (String line : asciiArt) {
+    // artBuilder.append(line).append("\n");
+    // }
 
-        return artBuilder.toString();
-    }
+    // return artBuilder.toString();
+    // }
+
 
     /**
      * Validates a given password based on several predefined conditions.
      * 
      * The password must:
      * <ol>
-     *   <li>Be at least 8 characters long.</li>
-     *   <li>Be no longer than 12 characters.</li>
-     *   <li>Contain at least one digit.</li>
-     *   <li>Contain at least one uppercase letter.</li>
-     *   <li>Contain at least one special character (such as !, ?, #, etc.).</li>
-     *   <li>Not contain any spaces or tab characters.</li>
+     * <li>Be at least 8 characters long.</li>
+     * <li>Be no longer than 12 characters.</li>
+     * <li>Contain at least one digit.</li>
+     * <li>Contain at least one uppercase letter.</li>
+     * <li>Contain at least one special character (such as !, ?, #, etc.).</li>
+     * <li>Not contain any spaces or tab characters.</li>
      * </ol>
      *
      * @param potentialPassword The password to be validated.
-     * @return A {@link ValidationResult} indicating whether the password is valid or not, with a corresponding message.
+     * @return A {@link ValidationResult} indicating whether the password is valid
+     *         or not, with a corresponding message.
      */
     @Override
     public ValidationResult validate(String potentialPassword) {
@@ -96,8 +109,10 @@ public class Bouncer implements PasswordValidator {
         // Falls alle Bedingungen erfüllt sind
         // If all conditions are met
         return new ValidationResult(true,
-                "Das Passwort ist korrekt. / The password is correct.\n\n" + getYouAreInMThiebaudArt());
+                "Das Passwort ist korrekt. / The password is correct.\n\n");
+        // + getYouAreInMThiebaudArt() nach dem ValidationResult hinter \n\n einfügen
+        // für ASCII Art
+
     }
 
 }
-
