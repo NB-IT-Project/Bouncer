@@ -1,6 +1,8 @@
 # Bouncer
  
-This is a Password Validator. It checks if multiple conditions are met. For that it implements the PasswordValidatorTester
+Dies ist ein Passwort-Validator. Er überprüft, ob mehrere Bedingungen erfüllt sind, wie z. B. die Länge, das Vorhandensein von Großbuchstaben, Ziffern und Sonderzeichen sowie das Fehlen von Leerzeichen. Die Validierungslogik ist in der Klasse Bouncer implementiert, die das Interface PasswordValidator implementiert. Der PasswordValidatorTester wird verwendet, um die Funktionalität dieser Implementierung zu testen.
+
+This is a Password Validator. It checks if multiple conditions are met, such as length, inclusion of uppercase letters, digits, and special characters, and absence of spaces. The validation logic is implemented in the Bouncer class, which adheres to the PasswordValidator interface. The PasswordValidatorTester is used to test the functionality of this implementation.
 
 ## Programm ausführen / Run The Program
 

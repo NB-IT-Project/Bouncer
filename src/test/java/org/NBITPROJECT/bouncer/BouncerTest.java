@@ -1,9 +1,11 @@
 package org.NBITPROJECT.bouncer;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.NBITPROJECT.bouncer.Bouncer;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
 import com.cthiebaud.passwordvalidator.ValidationResult;
 
@@ -14,7 +16,15 @@ import com.cthiebaud.passwordvalidator.ValidationResult;
  */
 public class BouncerTest {
 
-    private final Bouncer bouncer = new Bouncer();
+    private Bouncer bouncer;
+
+    /**
+     * Initializes a new instance of Bouncer before each test.
+     */
+    @BeforeEach
+    public void setUp() {
+        bouncer = new Bouncer();
+    }
 
     /**
      * Tests a valid password that meets all the criteria.
@@ -124,4 +134,30 @@ public class BouncerTest {
         ValidationResult result = bouncer.validate(password);
         assertTrue(result.isValid());
     }
+
+    /**
+     * Tests a null password, which is not allowed.
+     */
+    @Test
+    public void testNullPassword() {
+        try {
+            bouncer.validate(null);
+        } catch (IllegalArgumentException e) {
+            assertTrue(e.getMessage().contains("Das Passwort darf nicht null sein"));
+        }
+    }
+
+    /**
+     * Tests an empty password (i.e., when the user presses Enter with no input),
+     * which is not allowed.
+     */
+    @Test
+    public void testEmptyPassword() {
+        try {
+            bouncer.validate("");
+        } catch (IllegalArgumentException e) {
+            assertTrue(e.getMessage().contains("Das Passwort darf nicht null sein"));
+        }
+    }
+
 }

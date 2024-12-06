@@ -20,8 +20,6 @@ public class Bouncer implements PasswordValidator {
      * @return A string representing the ASCII art to be printed when the password
      *         is correct.
      */
-    
-    
     // public String getYouAreInMThiebaudArt() {
     // String[] asciiArt = {
     // " Y Y OOO U U AAAAA RRRRR EEEEE O N NNN M M TTTTT H H III EEEEE BBBB AAAAA U
@@ -44,7 +42,6 @@ public class Bouncer implements PasswordValidator {
     // return artBuilder.toString();
     // }
 
-
     /**
      * Validates a given password based on several predefined conditions.
      * 
@@ -64,55 +61,73 @@ public class Bouncer implements PasswordValidator {
      */
     @Override
     public ValidationResult validate(String potentialPassword) {
-        // Bedingung 1: Passwortlänge (mindestens 8 Zeichen)
-        // Condition 1: Password length (at least 8 characters)
-        if (potentialPassword.length() < 8) {
-            return new ValidationResult(false,
-                    "Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen enthalten. / The password is too short. It must contain at least 8 characters.");
+        try {
+            // Überprüfen, ob das Passwort null ist
+            // Check if the password is null
+            if (potentialPassword == null) {
+                throw new IllegalArgumentException(
+                        "Das Passwort darf nicht null sein. / The password must not be null.");
+            }
+
+            // If the password is an empty string, treat it as null
+            if (potentialPassword.trim().isEmpty()) {
+                potentialPassword = null; // Treat empty input as null
+                throw new IllegalArgumentException(
+                        "Das Passwort darf nicht null sein. Bitte gebe etwas ein. / The password must not be null. Please enter something.");
+            }
+
+            // Bedingung 1: Passwortlänge (mindestens 8 Zeichen)
+            // Condition 1: Password length (at least 8 characters)
+            if (potentialPassword.length() < 8) {
+                return new ValidationResult(false,
+                        "Das Passwort ist zu kurz. Es muss mindestens 8 Zeichen enthalten. / The password is too short. It must contain at least 8 characters.");
+            }
+
+            // Bedingung 2: Passwortlänge (höchstens 12 Zeichen)
+            // Condition 2: Password length (at most 12 characters)
+            if (potentialPassword.length() > 12) {
+                return new ValidationResult(false,
+                        "Das Passwort ist zu lang. Es darf höchstens 12 Zeichen enthalten. / The password is too long. It must not exceed 12 characters.");
+            }
+
+            // Bedingung 3: Mindestens eine Zahl
+            // Condition 3: At least one number
+            if (!potentialPassword.matches(".*\\d.*")) {
+                return new ValidationResult(false,
+                        "Das Passwort muss mindestens eine Zahl enthalten. / The password must contain at least one number.");
+            }
+
+            // Bedingung 4: Mindestens ein Großbuchstabe
+            // Condition 4: At least one uppercase letter
+            if (!potentialPassword.matches(".*[A-Z].*")) {
+                return new ValidationResult(false,
+                        "Das Passwort muss mindestens einen Großbuchstaben enthalten. / The password must contain at least one uppercase letter.");
+            }
+
+            // Bedingung 5: Mindestens ein Sonderzeichen
+            // Condition 5: At least one special symbol
+            if (!potentialPassword.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
+                return new ValidationResult(false,
+                        "Das Passwort muss mindestens ein Sonderzeichen wie z.B. ? oder ! enthalten. / The password must contain at least one special character such as ? or !");
+            }
+
+            // Bedingung 6: Keine Leerzeichen oder Tabulatoren
+            // Condition 6: No spaces or tabs
+            if (potentialPassword.contains(" ") || potentialPassword.contains("\t")) {
+                return new ValidationResult(false,
+                        "Das Passwort darf keine Leerzeichen oder Tabulatoren enthalten. / The password must not contain spaces or tabs.");
+            }
+
+            // Falls alle Bedingungen erfüllt sind
+            // If all conditions are met
+            return new ValidationResult(true,
+                    "Das Passwort ist korrekt. / The password is correct.\n\n");
+            // + getYouAreInMThiebaudArt() nach dem ValidationResult hinter \n\n einfügen
+            // für ASCII Art
+
+        } catch (IllegalArgumentException e) {
+            // Handle the exception gracefully by returning it in a ValidationResult
+            return new ValidationResult(false, e.getMessage());
         }
-
-        // Bedingung 2: Passwortlänge (höchstens 12 Zeichen)
-        // Condition 2: Password length (at most 12 characters)
-        if (potentialPassword.length() > 12) {
-            return new ValidationResult(false,
-                    "Das Passwort ist zu lang. Es darf höchstens 12 Zeichen enthalten. / The password is too long. It must not exceed 12 characters.");
-        }
-
-        // Bedingung 3: Mindestens eine Zahl
-        // Condition 3: At least one number
-        if (!potentialPassword.matches(".*\\d.*")) {
-            return new ValidationResult(false,
-                    "Das Passwort muss mindestens eine Zahl enthalten. / The password must contain at least one number.");
-        }
-
-        // Bedingung 4: Mindestens ein Großbuchstabe
-        // Condition 4: At least one uppercase letter
-        if (!potentialPassword.matches(".*[A-Z].*")) {
-            return new ValidationResult(false,
-                    "Das Passwort muss mindestens einen Großbuchstaben enthalten. / The password must contain at least one uppercase letter.");
-        }
-
-        // Bedingung 5: Mindestens ein Sonderzeichen
-        // Condition 5: At least one special symbol
-        if (!potentialPassword.matches(".*[!@#$%^&*(),.?\":{}|<>].*")) {
-            return new ValidationResult(false,
-                    "Das Passwort muss mindestens ein Sonderzeichen wie z.B. ? oder ! enthalten. / The password must contain at least one special character such as ? or !");
-        }
-
-        // Bedingung 6: Keine Leerzeichen oder Tabulatoren
-        // Condition 6: No spaces or tabs
-        if (potentialPassword.contains(" ") || potentialPassword.contains("\t")) {
-            return new ValidationResult(false,
-                    "Das Passwort darf keine Leerzeichen oder Tabulatoren enthalten. / The password must not contain spaces or tabs.");
-        }
-
-        // Falls alle Bedingungen erfüllt sind
-        // If all conditions are met
-        return new ValidationResult(true,
-                "Das Passwort ist korrekt. / The password is correct.\n\n");
-        // + getYouAreInMThiebaudArt() nach dem ValidationResult hinter \n\n einfügen
-        // für ASCII Art
-
     }
-
 }
