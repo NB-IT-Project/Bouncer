@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.NBITPROJECT.bouncer.BouncerTest" time="0.04" tests="12" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="org.NBITPROJECT.bouncer.BouncerTest" time="0.126" tests="12" errors="0" skipped="0" failures="1">
   <properties>
     <property name="java.specification.version" value="23"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="DE"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Eclipse Adoptium\jdk-23.0.1.11-hotspot\bin"/>
-    <property name="sun.java.command" value="C:\Users\nberg\AppData\Local\Temp\surefire18405077921268792224\surefirebooter-20241206134049125_3.jar C:\Users\nberg\AppData\Local\Temp\surefire18405077921268792224 2024-12-06T13-40-49_042-jvmRun1 surefire-20241206134049125_1tmp surefire_0-20241206134049125_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\nberg\AppData\Local\Temp\surefire16327363930102774434\surefirebooter-20241209224711186_3.jar C:\Users\nberg\AppData\Local\Temp\surefire16327363930102774434 2024-12-09T22-47-11_077-jvmRun1 surefire-20241209224711186_1tmp surefire_0-20241209224711186_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\nberg\Documents\GitHub\Bouncer\target\test-classes;C:\Users\nberg\Documents\GitHub\Bouncer\target\classes;C:\Users\nberg\.m2\repository\com\cthiebaud\password-validator\1.0.0-SNAPSHOT\password-validator-1.0.0-SNAPSHOT.jar;C:\Users\nberg\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.11.2\junit-jupiter-api-5.11.2.jar;C:\Users\nberg\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\nberg\.m2\repository\org\junit\platform\junit-platform-commons\1.11.2\junit-platform-commons-1.11.2.jar;C:\Users\nberg\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\nberg\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.11.2\junit-jupiter-engine-5.11.2.jar;C:\Users\nberg\.m2\repository\org\junit\platform\junit-platform-engine\1.11.2\junit-platform-engine-1.11.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\nberg\AppData\Local\Temp\surefire18405077921268792224\surefirebooter-20241206134049125_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\nberg\AppData\Local\Temp\surefire16327363930102774434\surefirebooter-20241209224711186_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="23.0.1+11"/>
@@ -59,16 +59,29 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="67.0"/>
   </properties>
-  <testcase name="testNullPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.013"/>
-  <testcase name="testValidPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.003"/>
+  <testcase name="testNullPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.032"/>
+  <testcase name="testValidPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.031">
+    <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertTrue.failNotTrue(AssertTrue.java:63)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:36)
+	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:31)
+	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:183)
+	at org.NBITPROJECT.bouncer.BouncerTest.testValidPassword(BouncerTest.java:36)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+]]></failure>
+  </testcase>
   <testcase name="testEdgeCaseMaxLength" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
-  <testcase name="testEdgeCaseMinLength" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
-  <testcase name="testTooLongPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
-  <testcase name="testContainsTab" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
-  <testcase name="testMissingDigit" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
-  <testcase name="testContainsSpace" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
+  <testcase name="testEdgeCaseMinLength" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
+  <testcase name="testTooLongPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
+  <testcase name="testContainsTab" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
+  <testcase name="testMissingDigit" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
+  <testcase name="testContainsSpace" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
   <testcase name="testMissingSpecialCharacter" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
-  <testcase name="testEmptyPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
-  <testcase name="testTooShortPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.001"/>
+  <testcase name="testEmptyPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
+  <testcase name="testTooShortPassword" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
   <testcase name="testMissingUppercase" classname="org.NBITPROJECT.bouncer.BouncerTest" time="0.0"/>
 </testsuite>
